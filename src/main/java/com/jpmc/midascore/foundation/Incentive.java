@@ -5,6 +5,10 @@ public class Incentive {
 
     public Incentive() {}
 
+    public Incentive(float amount) {
+        this.amount = amount;
+    }
+
     public float getAmount() {
         return amount;
     }

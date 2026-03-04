@@ -1,5 +1,9 @@
 general:
-  kafka-topic: trader-updates
+  kafka-topic: transactions
+
+incentive:
+  api:
+    url: http://localhost:8080/incentive
 
 spring:
   kafka:
@@ -12,5 +16,17 @@ spring:
         spring.json.trusted.packages: "com.jpmc.midascore.foundation"
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      # This is the line that fixes your error:
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+  datasource:
+    url: jdbc:h2:mem:midas;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
